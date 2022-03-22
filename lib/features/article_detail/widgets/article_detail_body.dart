@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
@@ -79,7 +80,13 @@ class ArticleDetailBody extends StatelessWidget {
             color: Colors.black,
           ),
           const SizedBox(height: 24),
-          Image.network(article.urlToImage),
+          CachedNetworkImage(
+            imageUrl: article.urlToImage,
+            placeholder: (context, url) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          )
         ],
       ),
     );
