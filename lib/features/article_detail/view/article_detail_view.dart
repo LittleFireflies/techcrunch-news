@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
 
 class ArticleDetailPage extends StatelessWidget {
@@ -89,11 +90,18 @@ class _ArticleDetailBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          const Text(
-            'Read news',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+          InkWell(
+            onTap: () => Navigator.pushNamed(
+              context,
+              ArticleWebview.routeName,
+              arguments: article.url,
+            ),
+            child: const Text(
+              'Read news',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(height: 4),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:tech_crunch_news/features/article_detail/view/article_detail_view.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_view.dart';
+import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/repositories/api/api_service.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
@@ -42,6 +43,13 @@ class MyApp extends StatelessWidget {
               final article = settings.arguments as Article;
               return MaterialPageRoute(
                 builder: (context) => ArticleDetailPage(article: article),
+                settings: settings,
+              );
+            case ArticleWebview.routeName:
+              final url = settings.arguments as String;
+
+              return MaterialPageRoute(
+                builder: (context) => ArticleWebview(url: url),
                 settings: settings,
               );
             default:
