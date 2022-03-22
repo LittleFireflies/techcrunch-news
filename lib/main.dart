@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
+import 'package:tech_crunch_news/features/article_detail/view/article_detail_view.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_view.dart';
 import 'package:tech_crunch_news/repositories/api/api_service.dart';
+import 'package:tech_crunch_news/repositories/models/article.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
 
 void main() {
@@ -27,7 +29,28 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           textTheme: GoogleFonts.robotoTextTheme(),
         ),
-        home: const ArticleListPage(),
+        initialRoute: ArticleListPage.routeName,
+        onGenerateRoute: (RouteSettings settings) {
+          switch (settings.name) {
+            case ArticleListPage.routeName:
+              return MaterialPageRoute(
+                  builder: (context) => const ArticleListPage());
+            case ArticleDetailPage.routeName:
+              final article = settings.arguments as Article;
+              return MaterialPageRoute(
+                builder: (context) => ArticleDetailPage(article: article),
+                settings: settings,
+              );
+            default:
+              return MaterialPageRoute(builder: (_) {
+                return Scaffold(
+                  body: Center(
+                    child: Text('Page not found :('),
+                  ),
+                );
+              });
+          }
+        },
       ),
     );
   }
