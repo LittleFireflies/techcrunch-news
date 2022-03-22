@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_crunch_news/theme/typography.dart';
 
 class ArticleListHeader extends StatelessWidget {
   const ArticleListHeader({Key? key}) : super(key: key);
@@ -9,30 +10,22 @@ class ArticleListHeader extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24.0, top: 24.0, right: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Text(
             'Find the Latest Update',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.bigTitle,
           ),
-          SizedBox(height: 24),
-          TextField(
+          const SizedBox(height: 24),
+          const TextField(
             decoration: InputDecoration(
               hintText: 'Search for News',
               suffixIcon: Icon(Icons.search),
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Text(
             'Featured Stories',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(context).textTheme.sectionTitle,
           ),
         ],
       ),

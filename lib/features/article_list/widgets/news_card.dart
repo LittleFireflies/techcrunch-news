@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_crunch_news/features/article_detail/view/article_detail_view.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/theme/typography.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({
@@ -39,12 +40,12 @@ class NewsCard extends StatelessWidget {
                     article.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 24),
+                    style: Theme.of(context).textTheme.title,
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     'Read news',
-                    style: TextStyle(fontSize: 18),
+                    style: Theme.of(context).textTheme.display,
                   ),
                   const SizedBox(height: 4),
                   Container(

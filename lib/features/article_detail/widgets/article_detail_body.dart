@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/theme/typography.dart';
 
 class ArticleDetailBody extends StatelessWidget {
   final Article article;
@@ -34,16 +35,12 @@ class ArticleDetailBody extends StatelessWidget {
                 children: [
                   Text(
                     article.publishedAt,
-                    style: const TextStyle(
-                      fontSize: 14,
-                    ),
+                    style: Theme.of(context).textTheme.displayDate,
                   ),
                   const SizedBox(height: 8),
                   Text(
                     article.source.name,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
+                    style: Theme.of(context).textTheme.sectionTitle,
                   ),
                 ],
               )
@@ -52,17 +49,16 @@ class ArticleDetailBody extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             article.title,
-            style: const TextStyle(
-              fontSize: 36,
-            ),
+            style: Theme.of(context).textTheme.bigTitle.copyWith(
+                  fontWeight: FontWeight.normal,
+                ),
           ),
           const SizedBox(height: 24),
           Text(
             article.description,
-            style: const TextStyle(
-              fontSize: 22,
-              color: Color(0xFF616161),
-            ),
+            style: Theme.of(context).textTheme.title.copyWith(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
           ),
           const SizedBox(height: 24),
           InkWell(
@@ -71,12 +67,9 @@ class ArticleDetailBody extends StatelessWidget {
               ArticleWebview.routeName,
               arguments: article.url,
             ),
-            child: const Text(
+            child: Text(
               'Read news',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.sectionTitle,
             ),
           ),
           const SizedBox(height: 4),
