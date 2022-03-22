@@ -37,65 +37,78 @@ class ArticleListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('TechCrunch News'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Find the Latest Update',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            pinned: true,
+            title: Text('TechCrunch News'),
+          ),
+          const SliverPadding(
+            padding: EdgeInsets.only(left: 24.0, top: 24.0, right: 24.0),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate.fixed(
+                [
+                  Text(
+                    'Find the Latest Update',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 24),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search for News',
+                      suffixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                  SizedBox(height: 24),
+                  Text(
+                    'Featured Stories',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 24),
+                ],
               ),
             ),
-            const SizedBox(height: 24),
-            const TextField(
-              decoration: InputDecoration(
-                hintText: 'Search for News',
-                suffixIcon: Icon(Icons.search),
-              ),
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Featured Stories',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 24),
-            Expanded(
-              child: BlocBuilder<ArticleListBloc, ArticleListState>(
-                builder: (context, state) {
-                  if (state is ArticleListLoadErrorState) {
-                    return Center(
-                      child: Text(state.message),
-                    );
-                  } else if (state is ArticleListLoadSuccessState) {
-                    return ListView.builder(
-                      itemBuilder: (context, index) {
+          ),
+          BlocBuilder<ArticleListBloc, ArticleListState>(
+            builder: (context, state) {
+              if (state is ArticleListLoadErrorState) {
+                return SliverToBoxAdapter(
+                  child: Center(
+                    child: Text(state.message),
+                  ),
+                );
+              } else if (state is ArticleListLoadSuccessState) {
+                return SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
                         final article = state.articles[index];
 
                         return NewsCard(article: article);
                       },
-                      itemCount: state.articles.length,
-                    );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
-              ),
-            ),
-          ],
-        ),
+                      childCount: state.articles.length,
+                    ),
+                  ),
+                );
+              } else {
+                return const SliverToBoxAdapter(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
