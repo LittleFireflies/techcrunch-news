@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "totalResults": 1,
+  "articles": [
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "John Doe",
+      "title": "Awesome News",
+      "description": "Awesome News description",
+      "url": "url",
+      "urlToImage": "urlToImage",
+      "publishedAt": "2022-01-01T23:23:23",
+      "content": "content"
+    }
+  ]
+}
