@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:tech_crunch_news/repositories/api/api_service.dart';
-import 'package:tech_crunch_news/repositories/news_repository/news_api_repository.dart';
+import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     final client = Client();
-    final repo = NewsApiRepository(apiService: ApiService(client));
+    final repo = NewsRepository(apiService: ApiService(client));
     repo.getTopHeadlineNews().then((value) => print("Data: ${value}"));
   }
 
