@@ -26,8 +26,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
           textTheme: GoogleFonts.robotoTextTheme(),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+          ),
         ),
         initialRoute: ArticleListPage.routeName,
         onGenerateRoute: (RouteSettings settings) {
