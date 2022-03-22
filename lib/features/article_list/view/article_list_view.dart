@@ -6,6 +6,7 @@ import 'package:tech_crunch_news/features/article_list/bloc/article_list_event.d
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_state.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
+import 'package:tech_crunch_news/widgets/news_app_bar.dart';
 
 class ArticleListPage extends StatelessWidget {
   static const routeName = 'articleListPage';
@@ -31,10 +32,7 @@ class ArticleListView extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
-            pinned: true,
-            title: Text('TechCrunch News'),
-          ),
+          const NewsSliverAppBar(),
           const SliverPadding(
             padding: EdgeInsets.only(left: 24.0, top: 24.0, right: 24.0),
             sliver: SliverList(

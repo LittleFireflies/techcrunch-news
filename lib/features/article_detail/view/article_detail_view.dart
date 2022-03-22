@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/widgets/news_app_bar.dart';
 
 class ArticleDetailPage extends StatelessWidget {
   static const routeName = 'articleDetailPage';
@@ -14,10 +15,7 @@ class ArticleDetailPage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            title: Text('TechCrunch News'),
-            pinned: true,
-          ),
+          const NewsSliverAppBar(),
           SliverToBoxAdapter(
             child: _ArticleDetailBody(article: article),
           )

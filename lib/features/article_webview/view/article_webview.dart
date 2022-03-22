@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_crunch_news/widgets/news_app_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticleWebview extends StatelessWidget {
@@ -11,7 +12,7 @@ class ArticleWebview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const NewsAppBar(),
       body: WebView(initialUrl: url),
     );
   }
