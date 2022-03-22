@@ -8,6 +8,7 @@ import 'package:tech_crunch_news/features/article_webview/view/article_webview.d
 import 'package:tech_crunch_news/repositories/api/api_service.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
+import 'package:tech_crunch_news/theme/color_scheme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,10 +29,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           textTheme: GoogleFonts.robotoTextTheme(),
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
-          ),
+          colorScheme: NewsColorScheme.lightColorScheme,
         ),
         initialRoute: ArticleListPage.routeName,
         onGenerateRoute: (RouteSettings settings) {
