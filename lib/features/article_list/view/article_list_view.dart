@@ -72,7 +72,6 @@ class ArticleListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 24),
                 ],
               ),
             ),

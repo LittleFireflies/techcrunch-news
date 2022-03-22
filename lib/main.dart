@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_view.dart';
 import 'package:tech_crunch_news/repositories/api/api_service.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.robotoTextTheme(),
       ),
       home: const ArticleListPage(),
     );
