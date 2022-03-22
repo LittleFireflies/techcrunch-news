@@ -45,7 +45,8 @@ void main() {
         // arrange
         when(() => client.get(Uri.parse(
                 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=31b1d418811249f0970f756bca4cf906')))
-            .thenAnswer((_) async => Response('Not Found', 404));
+            .thenAnswer(
+                (_) async => Response(readJson('dummy_data/error.json'), 404));
         // act
         final call = apiService.getTopHeadlineNews();
         // assert

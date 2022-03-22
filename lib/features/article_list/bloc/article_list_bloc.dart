@@ -19,8 +19,7 @@ class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
       } on ServerException catch (e) {
         emit(ArticleListLoadErrorState(e.message));
       } catch (e) {
-        emit(const ArticleListLoadErrorState(
-            'Error occurred. Please try again or contact the developer'));
+        emit(ArticleListLoadErrorState(e.toString()));
       }
     });
   }

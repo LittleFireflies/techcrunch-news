@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tech_crunch_news/repositories/models/error_response.dart';
 import 'package:tech_crunch_news/utils/exceptions.dart';
 
 import '../models/news_response.dart';
@@ -18,7 +19,8 @@ class ApiService {
     if (response.statusCode == 200) {
       return NewsResponse.fromJson(json.decode(response.body));
     } else {
-      throw const ServerException();
+      final errorResponse = ErrorResponse.fromJson(json.decode(response.body));
+      throw ServerException(message: errorResponse.message);
     }
   }
 }
