@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_view.dart';
@@ -14,13 +15,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: GoogleFonts.robotoTextTheme(),
+    return RepositoryProvider(
+      create: (context) => NewsRepository(
+        apiService: ApiService(
+          Client(),
+        ),
       ),
-      home: const ArticleListPage(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          textTheme: GoogleFonts.robotoTextTheme(),
+        ),
+        home: const ArticleListPage(),
+      ),
     );
   }
 }

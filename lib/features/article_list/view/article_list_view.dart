@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_bloc.dart';
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_event.dart';
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_state.dart';
-import 'package:tech_crunch_news/repositories/api/api_service.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
 
@@ -15,18 +13,11 @@ class ArticleListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => NewsRepository(
-        apiService: ApiService(
-          Client(),
-        ),
-      ),
-      child: BlocProvider(
-        create: (context) => ArticleListBloc(
-          repository: context.read<NewsRepository>(),
-        )..add(const LoadArticleListEvent()),
-        child: const ArticleListView(),
-      ),
+    return BlocProvider(
+      create: (context) => ArticleListBloc(
+        repository: context.read<NewsRepository>(),
+      )..add(const LoadArticleListEvent()),
+      child: const ArticleListView(),
     );
   }
 }
@@ -142,7 +133,7 @@ class NewsCard extends StatelessWidget {
                   article.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                 ),
                 const SizedBox(height: 16),
                 const Text(

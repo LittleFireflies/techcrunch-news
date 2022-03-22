@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ErrorResponse extends Equatable {
-  ErrorResponse({
+  const ErrorResponse({
     required this.status,
     required this.code,
     required this.message,
