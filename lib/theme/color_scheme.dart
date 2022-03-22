@@ -7,7 +7,7 @@ class NewsColorScheme {
     primary: NewsColors.white,
     onPrimary: NewsColors.black,
     secondary: NewsColors.grey,
-    onSecondary: NewsColors.black,
+    onSecondary: NewsColors.white,
     error: NewsColors.red,
     onError: NewsColors.white,
     background: NewsColors.white,
