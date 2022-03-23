@@ -30,7 +30,7 @@ class ApiService {
 
   Future<NewsResponse> searchNews({required String query}) async {
     final response = await _client.get(Uri.parse(
-        '${baseUrl}top-headlines?apiKey=$_apiKey&$_techCrunchSource&q=$query'));
+        '${baseUrl}everything?apiKey=$_apiKey&language=en&$_techCrunchSource&q=$query'));
 
     if (response.statusCode == 200) {
       return NewsResponse.fromJson(json.decode(response.body));

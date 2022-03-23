@@ -60,7 +60,7 @@ void main() {
       () async {
         // arrange
         when(() => client.get(Uri.parse(
-                'https://newsapi.org/v2/top-headlines?apiKey=31b1d418811249f0970f756bca4cf906&sources=techcrunch&q=Bitcoin')))
+                'https://newsapi.org/v2/everything?apiKey=31b1d418811249f0970f756bca4cf906&language=en&sources=techcrunch&q=Bitcoin')))
             .thenAnswer((_) async =>
                 Response(readJson('dummy_data/top_headlines.json'), 200));
         const response = TestModels.newsResponse;
@@ -77,7 +77,7 @@ void main() {
       () async {
         // arrange
         when(() => client.get(Uri.parse(
-                'https://newsapi.org/v2/top-headlines?apiKey=31b1d418811249f0970f756bca4cf906&sources=techcrunch&q=Bitcoin')))
+                'https://newsapi.org/v2/everything?apiKey=31b1d418811249f0970f756bca4cf906&language=en&sources=techcrunch&q=Bitcoin')))
             .thenAnswer(
                 (_) async => Response(readJson('dummy_data/error.json'), 404));
         // act
