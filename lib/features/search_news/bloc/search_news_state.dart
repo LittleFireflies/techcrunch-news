@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/api/models/article.dart';
 
 abstract class SearchNewsState extends Equatable {
   const SearchNewsState();

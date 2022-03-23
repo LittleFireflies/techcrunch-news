@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tech_crunch_news/repositories/api/api_service.dart';
+import 'package:tech_crunch_news/api/api_service.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
 
 import '../../helpers/models.dart';

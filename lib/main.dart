@@ -1,12 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
+import 'package:tech_crunch_news/api/interceptor/error_interceptor.dart';
+import 'package:tech_crunch_news/api/models/article.dart';
 import 'package:tech_crunch_news/features/article_detail/view/article_detail_view.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_view.dart';
 import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/features/search_news/view/search_news_page.dart';
-import 'package:tech_crunch_news/repositories/api/api_service.dart';
-import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/api/api_service.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
 import 'package:tech_crunch_news/theme/theme.dart';
 
@@ -19,10 +20,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const defaultTimeoutInSeconds = 60 * 1000;
+    final dio = Dio(
+      BaseOptions(
+        connectTimeout: defaultTimeoutInSeconds,
+        receiveTimeout: defaultTimeoutInSeconds,
+        sendTimeout: defaultTimeoutInSeconds,
+      ),
+    );
+    dio.interceptors.add(ErrorInterceptor());
+
     return RepositoryProvider(
       create: (context) => NewsRepository(
         apiService: ApiService(
-          Client(),
+          dio,
         ),
       ),
       child: MaterialApp(

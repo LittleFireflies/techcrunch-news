@@ -86,24 +86,5 @@ void main() {
         verify(() => repository.searchNews(query: query)).called(1);
       },
     );
-
-    blocTest<SearchNewsBloc, SearchNewsState>(
-      'emits SearchErrorState '
-      'when SearchByKeywordsEvent is added '
-      'and thrown a server exception',
-      setUp: () {
-        when(() => repository.searchNews(query: query))
-            .thenThrow(serverException);
-      },
-      build: () => bloc,
-      act: (bloc) => bloc.add(const SearchByKeywordsEvent(keyword: query)),
-      expect: () => [
-        const SearchLoadingState(),
-        SearchErrorState(serverException.message),
-      ],
-      verify: (_) {
-        verify(() => repository.searchNews(query: query)).called(1);
-      },
-    );
   });
 }

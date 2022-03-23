@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tech_crunch_news/repositories/models/source.dart';
+import 'package:tech_crunch_news/api/models/source.dart';
 
 class Article extends Equatable {
   const Article({

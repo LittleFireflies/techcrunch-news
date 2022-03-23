@@ -1,5 +1,5 @@
-import 'package:tech_crunch_news/repositories/api/api_service.dart';
-import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/api/api_service.dart';
+import 'package:tech_crunch_news/api/models/article.dart';
 
 class NewsRepository {
   final ApiService _apiService;

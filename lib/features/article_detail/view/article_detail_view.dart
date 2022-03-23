@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_crunch_news/features/article_detail/widgets/article_detail_body.dart';
-import 'package:tech_crunch_news/repositories/models/article.dart';
+import 'package:tech_crunch_news/api/models/article.dart';
 import 'package:tech_crunch_news/widgets/news_app_bar.dart';
 
 class ArticleDetailPage extends StatelessWidget {

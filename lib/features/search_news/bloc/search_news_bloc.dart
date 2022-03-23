@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_event.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_state.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
-import 'package:tech_crunch_news/utils/exceptions.dart';
 
 class SearchNewsBloc extends Bloc<SearchNewsEvent, SearchNewsState> {
   final NewsRepository _repository;
@@ -21,8 +20,6 @@ class SearchNewsBloc extends Bloc<SearchNewsEvent, SearchNewsState> {
         } else {
           emit(const SearchEmptyState());
         }
-      } on ServerException catch (e) {
-        emit(SearchErrorState(e.message));
       } catch (e) {
         emit(SearchErrorState(e.toString()));
       }

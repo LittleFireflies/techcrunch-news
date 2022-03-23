@@ -1,6 +1,6 @@
-import 'package:tech_crunch_news/repositories/models/article.dart';
-import 'package:tech_crunch_news/repositories/models/news_response.dart';
-import 'package:tech_crunch_news/repositories/models/source.dart';
+import 'package:tech_crunch_news/api/models/article.dart';
+import 'package:tech_crunch_news/api/models/news_response.dart';
+import 'package:tech_crunch_news/api/models/source.dart';
 
 class TestModels {
   static const newsResponse = NewsResponse(
