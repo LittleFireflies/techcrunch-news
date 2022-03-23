@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tech_crunch_news/features/article_webview/view/article_webview.dart';
 import 'package:tech_crunch_news/repositories/models/article.dart';
 import 'package:tech_crunch_news/theme/typography.dart';
@@ -35,7 +36,9 @@ class ArticleDetailBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    article.publishedAt,
+                    DateFormat.yMMMMd().format(
+                      DateTime.parse(article.publishedAt),
+                    ),
                     style: Theme.of(context).textTheme.displayDate,
                   ),
                   const SizedBox(height: 8),
