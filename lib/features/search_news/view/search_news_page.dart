@@ -38,21 +38,27 @@ class SearchNewsView extends StatelessWidget {
           BlocBuilder<SearchNewsBloc, SearchNewsState>(
             builder: (context, state) {
               if (state is SearchSuccessState) {
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final article = state.articles[index];
+                return SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final article = state.articles[index];
 
-                      return NewsCard(article: article);
-                    },
-                    childCount: state.articles.length,
+                        return NewsCard(article: article);
+                      },
+                      childCount: state.articles.length,
+                    ),
                   ),
                 );
               } else if (state is SearchEmptyState) {
                 return const SliverFillRemaining(
-                  child: Center(
-                    child:
-                        Text("We couldn't find the news you're looking for :("),
+                  child: Padding(
+                    padding: EdgeInsets.all(24.0),
+                    child: Center(
+                      child: Text(
+                          "We couldn't find the news you're looking for :("),
+                    ),
                   ),
                 );
               } else if (state is SearchErrorState) {

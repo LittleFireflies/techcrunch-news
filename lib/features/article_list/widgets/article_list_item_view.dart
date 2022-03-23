@@ -15,8 +15,11 @@ class ArticleListItemView extends StatelessWidget {
       builder: (context, state) {
         if (state is ArticleListLoadErrorState) {
           return SliverToBoxAdapter(
-            child: Center(
-              child: Text(state.message),
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Center(
+                child: Text(state.message),
+              ),
             ),
           );
         } else if (state is ArticleListLoadSuccessState) {
@@ -34,7 +37,7 @@ class ArticleListItemView extends StatelessWidget {
             ),
           );
         } else {
-          return const SliverToBoxAdapter(
+          return const SliverFillRemaining(
             child: Center(
               child: CircularProgressIndicator(),
             ),
