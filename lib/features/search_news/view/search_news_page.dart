@@ -5,6 +5,7 @@ import 'package:tech_crunch_news/features/article_list/widgets/news_card.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_bloc.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_event.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_state.dart';
+import 'package:tech_crunch_news/features/search_news/models/search_news_keys.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
 import 'package:tech_crunch_news/theme/typography.dart';
 import 'package:tech_crunch_news/widgets/news_animated_switcher.dart';
@@ -60,6 +61,7 @@ class SearchNewsListView extends StatelessWidget {
                 return SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   sliver: SliverList(
+                    key: SearchNewsKeys.newsListView,
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         final article = state.articles[index];
@@ -77,6 +79,7 @@ class SearchNewsListView extends StatelessWidget {
                     child: Center(
                       child: Text(
                         "We couldn't find the news you're looking for :(",
+                        key: SearchNewsKeys.emptyMessageText,
                         style: Theme.of(context).textTheme.display,
                         textAlign: TextAlign.center,
                       ),
@@ -86,7 +89,12 @@ class SearchNewsListView extends StatelessWidget {
               } else if (state is SearchErrorState) {
                 return SliverFillRemaining(
                   child: Center(
-                    child: Text(state.message),
+                    child: Text(
+                      state.message,
+                      key: SearchNewsKeys.errorMessageText,
+                      style: Theme.of(context).textTheme.display,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 );
               } else {
