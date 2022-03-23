@@ -11,4 +11,10 @@ class NewsRepository {
 
     return response.articles;
   }
+
+  Future<List<Article>> searchNews({required String query}) async {
+    final response = await _apiService.searchNews(query: query);
+
+    return response.articles;
+  }
 }
