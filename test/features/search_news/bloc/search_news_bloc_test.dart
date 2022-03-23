@@ -5,7 +5,6 @@ import 'package:tech_crunch_news/features/search_news/bloc/search_news_bloc.dart
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_event.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_state.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
-import 'package:tech_crunch_news/utils/exceptions.dart';
 
 import '../../../helpers/models.dart';
 
@@ -20,7 +19,6 @@ void main() {
     const query = 'Bitcoin';
 
     final exception = Exception('Error!');
-    const serverException = ServerException();
 
     setUp(() {
       repository = MockRepository();
