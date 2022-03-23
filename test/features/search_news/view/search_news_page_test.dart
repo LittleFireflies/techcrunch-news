@@ -54,7 +54,7 @@ void main() {
     );
 
     testWidgets(
-      'renders list of articles '
+      'renders loading view '
       'when state is SearchLoadingState',
       (tester) async {
         when(() => searchNewsBloc.state).thenReturn(const SearchLoadingState());
@@ -95,7 +95,7 @@ void main() {
     );
 
     testWidgets(
-      'renders error message text '
+      'renders empty message text '
       'when state is SearchEmptyState',
       (tester) async {
         when(() => searchNewsBloc.state).thenReturn(const SearchEmptyState());
