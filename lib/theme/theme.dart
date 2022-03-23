@@ -15,8 +15,8 @@ class NewsTheme {
     return themeData.copyWith(
       textTheme: GoogleFonts.robotoTextTheme(),
       appBarTheme: AppBarTheme(
-        backgroundColor: themeData.colorScheme.secondary,
-        foregroundColor: themeData.colorScheme.onSecondary,
+        backgroundColor: themeData.colorScheme.background,
+        foregroundColor: themeData.colorScheme.onBackground,
       ),
     );
   }
