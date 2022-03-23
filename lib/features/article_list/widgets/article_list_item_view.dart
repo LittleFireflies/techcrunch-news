@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_bloc.dart';
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_state.dart';
+import 'package:tech_crunch_news/features/article_list/models/article_list_keys.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_loading_view.dart';
 import 'package:tech_crunch_news/features/article_list/widgets/news_card.dart';
 import 'package:tech_crunch_news/theme/typography.dart';
@@ -27,6 +28,7 @@ class ArticleListItemView extends StatelessWidget {
                     child: Center(
                       child: Text(
                         state.message,
+                        key: ArticleListKeys.errorMessageText,
                         style: Theme.of(context).textTheme.display,
                       ),
                     ),
@@ -36,6 +38,7 @@ class ArticleListItemView extends StatelessWidget {
                 return SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   sliver: SliverList(
+                    key: ArticleListKeys.newsListView,
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         final article = state.articles[index];
