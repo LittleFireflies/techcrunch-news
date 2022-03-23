@@ -18,7 +18,7 @@ class ApiService {
 
   Future<NewsResponse> getTopHeadlineNews() async {
     final response = await _client.get(Uri.parse(
-        '${baseUrl}top-headlines?apiKey=${_apiKey}&${_techCrunchSource}'));
+        '${baseUrl}top-headlines?apiKey=$_apiKey&$_techCrunchSource'));
 
     if (response.statusCode == 200) {
       return NewsResponse.fromJson(json.decode(response.body));

@@ -6,6 +6,7 @@ import 'package:tech_crunch_news/features/search_news/bloc/search_news_bloc.dart
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_event.dart';
 import 'package:tech_crunch_news/features/search_news/bloc/search_news_state.dart';
 import 'package:tech_crunch_news/repositories/news_repository/news_repository.dart';
+import 'package:tech_crunch_news/theme/typography.dart';
 import 'package:tech_crunch_news/widgets/news_animated_switcher.dart';
 import 'package:tech_crunch_news/widgets/news_app_bar.dart';
 
@@ -70,12 +71,15 @@ class SearchNewsListView extends StatelessWidget {
                   ),
                 );
               } else if (state is SearchEmptyState) {
-                return const SliverToBoxAdapter(
+                return SliverToBoxAdapter(
                   child: Padding(
-                    padding: EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(24.0),
                     child: Center(
                       child: Text(
-                          "We couldn't find the news you're looking for :("),
+                        "We couldn't find the news you're looking for :(",
+                        style: Theme.of(context).textTheme.display,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 );

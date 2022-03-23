@@ -4,6 +4,7 @@ import 'package:tech_crunch_news/features/article_list/bloc/article_list_bloc.da
 import 'package:tech_crunch_news/features/article_list/bloc/article_list_state.dart';
 import 'package:tech_crunch_news/features/article_list/view/article_list_loading_view.dart';
 import 'package:tech_crunch_news/features/article_list/widgets/news_card.dart';
+import 'package:tech_crunch_news/theme/typography.dart';
 import 'package:tech_crunch_news/widgets/news_animated_switcher.dart';
 
 class ArticleListItemView extends StatelessWidget {
@@ -24,7 +25,10 @@ class ArticleListItemView extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Center(
-                      child: Text(state.message),
+                      child: Text(
+                        state.message,
+                        style: Theme.of(context).textTheme.display,
+                      ),
                     ),
                   ),
                 );
