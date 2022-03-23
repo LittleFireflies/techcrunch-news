@@ -25,7 +25,7 @@ void main() {
       () async {
         // arrange
         when(() => client.get(Uri.parse(
-                'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=31b1d418811249f0970f756bca4cf906')))
+                'https://newsapi.org/v2/top-headlines?apiKey=31b1d418811249f0970f756bca4cf906&sources=techcrunch')))
             .thenAnswer((_) async =>
                 Response(readJson('dummy_data/top_headlines.json'), 200));
         const response = TestModels.newsResponse;
@@ -42,11 +42,46 @@ void main() {
       () async {
         // arrange
         when(() => client.get(Uri.parse(
-                'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=31b1d418811249f0970f756bca4cf906')))
+                'https://newsapi.org/v2/top-headlines?apiKey=31b1d418811249f0970f756bca4cf906&sources=techcrunch')))
             .thenAnswer(
                 (_) async => Response(readJson('dummy_data/error.json'), 404));
         // act
         final call = apiService.getTopHeadlineNews();
+        // assert
+        expect(() => call, throwsA(isA<ServerException>()));
+      },
+    );
+  });
+
+  group('searchNews', () {
+    test(
+      'return NewsResponse '
+      'when status code is 200',
+      () async {
+        // arrange
+        when(() => client.get(Uri.parse(
+                'https://newsapi.org/v2/top-headlines?apiKey=31b1d418811249f0970f756bca4cf906&sources=techcrunch&q=Bitcoin')))
+            .thenAnswer((_) async =>
+                Response(readJson('dummy_data/top_headlines.json'), 200));
+        const response = TestModels.newsResponse;
+        // act
+        final result = await apiService.searchNews(query: 'Bitcoin');
+        // assert
+        expect(result, response);
+      },
+    );
+
+    test(
+      'throws exception '
+      'when statusCode is not 200',
+      () async {
+        // arrange
+        when(() => client.get(Uri.parse(
+                'https://newsapi.org/v2/top-headlines?apiKey=31b1d418811249f0970f756bca4cf906&sources=techcrunch&q=Bitcoin')))
+            .thenAnswer(
+                (_) async => Response(readJson('dummy_data/error.json'), 404));
+        // act
+        final call = apiService.searchNews(query: 'Bitcoin');
         // assert
         expect(() => call, throwsA(isA<ServerException>()));
       },
