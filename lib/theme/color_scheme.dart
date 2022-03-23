@@ -16,3 +16,7 @@ class NewsColorScheme {
     onSurface: NewsColors.black,
   );
 }
+
+extension NewsColorSchemeExtension on ColorScheme {
+  Color get lightGrey => NewsColors.lightGrey;
+}
