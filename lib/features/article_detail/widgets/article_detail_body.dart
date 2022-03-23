@@ -20,8 +20,8 @@ class ArticleDetailBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-                foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
                 child: Text(article.source.name[0]),
               ),
               const SizedBox(width: 16),
@@ -58,7 +58,7 @@ class ArticleDetailBody extends StatelessWidget {
           Text(
             article.description,
             style: Theme.of(context).textTheme.title.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
           ),
           const SizedBox(height: 24),
