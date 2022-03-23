@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_crunch_news/features/search_news/view/search_news_page.dart';
 import 'package:tech_crunch_news/theme/typography.dart';
 
 class ArticleListHeader extends StatelessWidget {
@@ -16,11 +17,19 @@ class ArticleListHeader extends StatelessWidget {
             style: Theme.of(context).textTheme.bigTitle,
           ),
           const SizedBox(height: 24),
-          const TextField(
-            decoration: InputDecoration(
+          TextField(
+            decoration: const InputDecoration(
               hintText: 'Search for News',
               suffixIcon: Icon(Icons.search),
             ),
+            textInputAction: TextInputAction.search,
+            onSubmitted: (query) {
+              Navigator.pushNamed(
+                context,
+                SearchNewsPage.routeName,
+                arguments: query,
+              );
+            },
           ),
           const SizedBox(height: 24),
           Text(
