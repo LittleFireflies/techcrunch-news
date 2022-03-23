@@ -48,6 +48,19 @@ class SearchNewsView extends StatelessWidget {
                     childCount: state.articles.length,
                   ),
                 );
+              } else if (state is SearchEmptyState) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child:
+                        Text("We couldn't find the news you're looking for :("),
+                  ),
+                );
+              } else if (state is SearchErrorState) {
+                return SliverFillRemaining(
+                  child: Center(
+                    child: Text(state.message),
+                  ),
+                );
               } else {
                 return const SliverFillRemaining(
                   child: Center(
